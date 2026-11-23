@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Long+Cang&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif-sc: "Noto Serif SC", serif;
+  --font-sans-sc: "Noto Sans SC", sans-serif;
+  --font-hand: "Ma Shan Zheng", cursive;
+  --font-hand2: "Zhi Mang Xing", cursive;
+  --font-hand3: "Long Cang", cursive;
+  --color-paper: #FFF9EF;
+  --color-paper2: #FDF1DC;
+  --color-ink: #2D2118;
+  --color-ink2: #5C4A3A;
+  --color-clay: #C65D3A;
+  --color-clay2: #A84A2B;
+  --color-mustard: #D9A441;
+  --color-sage: #7A8B6F;
+  --color-rose: #E8B4B8;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: #FFF9EF;
+  color: #2D2118;
+  font-family: "Noto Sans SC", sans-serif;
+  overflow-x: hidden;
+}
+::selection { background: #C65D3A; color: #FFF9EF; }
+
+/* paper grain */
+.paper-grain {
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(217,164,65,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(198,93,58,.06), transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+.paper-lines {
+  background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(45,33,24,.07) 32px);
+}
+.ruled {
+  background-image: repeating-linear-gradient(transparent, transparent 35px, rgba(198,93,58,.12) 36px);
+  line-height: 36px;
+}
+.torn-edge {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), 97% 100%, 93% calc(100% - 4px), 88% 100%, 82% calc(100% - 5px), 75% 100%, 68% calc(100% - 3px), 60% 100%, 52% calc(100% - 6px), 45% 100%, 38% calc(100% - 4px), 30% 100%, 22% calc(100% - 5px), 15% 100%, 8% calc(100% - 3px), 3% 100%, 0 calc(100% - 5px));
+}
+.stamp-edge {
+  -webkit-mask-image: radial-gradient(circle 6px at 6px 6px, transparent 98%, black 100%);
+  -webkit-mask-size: 14px 14px;
+  mask-image: radial-gradient(circle 6px at 6px 6px, transparent 98%, black 100%);
+  mask-size: 14px 14px;
+}
+.washi {
+  background: rgba(217,164,65,.45);
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.25) 0 6px, transparent 6px 12px);
+  backdrop-filter: blur(1px);
+}
+.washi-rose {
+  background: rgba(232,180,184,.55);
+  background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,.3) 0 5px, transparent 5px 10px);
+}
+.washi-sage {
+  background: rgba(122,139,111,.4);
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.2) 0 5px, transparent 5px 10px);
+}
+.ink-shadow { text-shadow: 2px 2px 0 rgba(198,93,58,.12); }
+@keyframes floaty { 0%,100%{ transform: translateY(0) rotate(var(--r,0deg)); } 50%{ transform: translateY(-8px) rotate(var(--r,0deg)); } }
+@keyframes wiggle { 0%,100%{ transform: rotate(-2deg);} 50%{ transform: rotate(2deg);} }
+@keyframes heartbeat { 0%,100%{ transform: scale(1);} 25%{ transform: scale(1.12);} 45%{ transform: scale(.96);} 60%{ transform: scale(1.08);} }
+@keyframes flicker { 0%,100%{ opacity:1; transform: scale(1);} 50%{ opacity:.75; transform: scale(.96);} }
+@keyframes drift { 0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0;} 10%{opacity:.7;} 90%{opacity:.5;} 100%{ transform: translateY(-110vh) translateX(40px) rotate(320deg); opacity:0;} }
+@keyframes blink-caret { 0%,100%{opacity:1;} 50%{opacity:0;} }
+@keyframes stamp-in { 0%{ transform: scale(2.2) rotate(-18deg); opacity:0;} 60%{ transform: scale(.92) rotate(-12deg); opacity:1;} 100%{ transform: scale(1) rotate(-12deg); opacity:1;} }
+.animate-floaty { animation: floaty 5s ease-in-out infinite; }
+.animate-wiggle { animation: wiggle 2.4s ease-in-out infinite; }
+.animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+.animate-flicker { animation: flicker 1.8s ease-in-out infinite; }
+.animate-stamp { animation: stamp-in .5s cubic-bezier(.2,1.4,.4,1) both; }
+.caret::after { content: "▍"; animation: blink-caret 1s step-end infinite; color: #C65D3A; }
+.no-scrollbar::-webkit-scrollbar{ display:none; }
+.no-scrollbar{ scrollbar-width:none; }
